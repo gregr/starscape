@@ -15,6 +15,7 @@ OBJECTS = main.o log/log.o \
 
 SWIG_OBJECT = bin/starscape_output.py
 SWIG_INTERFACE = python/starscape_output.i
+SWIG_INTERFACE_WRAP = python/starscape_output_wrap.cxx
 
 CC = g++
 
@@ -35,7 +36,7 @@ LIBS = `sdl-config --libs` -L/usr/X11R6/lib -lSDL_ttf -lSDL_image \
 all:	$(SWIG_OBJECT) $(OBJECTS)
 	$(CC) -o bin/$(TARGET) $(CFLAGS) $(OBJECTS) $(LIBS)
 
-$(SWIG_OBJECT):	$(SWIG_INTERFACE)
+$(SWIG_OBJECT) $(SWIG_INTERFACE_WRAP):	$(SWIG_INTERFACE)
 	swig -c++ -python -I$(PROJECTDIR) -outdir $(PROJECTDIR)/bin \
 	$(SWIG_INTERFACE)
 
@@ -53,5 +54,6 @@ shrink:
 clean:
 	echo cleaning up
 	rm $(SWIG_OBJECT)
+	rm $(SWIG_INTERFACE_WRAP)
 	rm $(OBJECTS)
 	rm bin/$(TARGET)
