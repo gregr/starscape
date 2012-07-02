@@ -1,0 +1,4 @@
+cd bin
+formattounix
+cd ..
+cp Makefilelinux Makefile

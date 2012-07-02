@@ -1,0 +1,152 @@
+add statictext or drawstatictext ? remove monotonous bind / draw code
+
+IsShiftPressed() IsCtrlPressed() for multiselection
+
+menuitems are commandbuttons, not itembuttons
+
+remember menus can have submenus as items
+
+listbox polymorphic for multilistbox ? virtual SelectItem()
+
+generalize lists to more than just boxes (think of item and icon selections)
+
+provide alternatives to left-justified textbuttonbrushes
+
+file/stream loading utilities should use exceptions
+
+list/menu separators
+button groups
+tab-groups
+listboxes
+check box (just a switch button?)
+menu (or menu panel?)
+menu bar
+
+scroll fixtures
+resizer borders/frames
+title bars
+
+dialog panel
+
+frame window manager:
+-contains info about active frame (to give active colors to)
+	-info propogates using something like MakeParentTopFJwelfjwlef()
+-can be contained to create MDI child frames inside a frame?
+
+frame window:
+invisible main rectangle for glue
+resizing border (non-pickable if no resize)
+gradient titlebar
+optional menu
+draw a sink
+window content (client area)
+(either a single control to match sizes with the frame (like wxSizer), OR
+	some kind of background window that has child windows of its own)
+
+resize border changes mouse cursor brush OnMouseOver() and OnMouseLeave()
+
+key-routing to fake keyboard focus
+
+update linux makefile
+
+dialogs and frames have their destructor call RemoveFromParentList()
+think about possible handles to controls (created dynamically? from a manager?)
+
+
+clean up so that python can be tested
+
+boost bug report for pooled vectors
+
+template terminals, so that editbox/lines can be replaced with framed versions?
+or maybe just change the editboxbrush to draw frames...
+
+
+layout managers for dialogs and frames? (like wxSizer?)
+primary layout for a dialog that is activated from parent dialog's OnResize()
+can resize/reposition child layouts and windows
+
+layouts won't interfere with mouse selection, because they don't have to be added to the dialog's child list, but they can maintain their own hierarchy
+
+
+add "active" visual state for buttons buttons
+possible:
+mouseover activeness (hover)
+active button that is externally pointed at by a dialog? (if you press enter, that button will be pressed? works with tabs?) [button groups?]
+
+progress bars
+
+bevels with gradient shading
+text characters outlined
+look at S.K.A.T.E. game library for visual inspiration:
+http://skate.elabb.de/
+
+
+audio
+
+RakNet
+
+fix strange font problems with thin letters at right of screen:
+	(f, t, j) arial font
+
+
+variable frustum for PerspectiveView, gluPerspective?
+
+
+
+add some system logging
+
+
+move renderer managers to a better class? giant resource manager?
+
+
+parent-inherited alpha?
+
+signals-slots for messages?
+
+scriptable-window class
+xml-loading gui?
+
+signal/slot commands
+
+scrollbar controller defaults:
+	-for controlling values
+	-for controlling window offsets
+
+bold, italics and underlining
+
+
+"Bitstream Vera" fonts
+
+html-tag colored document
+keyword colored document
+
+
+Vertex Buffer Objects:
+http://www.devmaster.net/articles/oglVertexBuffer/
+
+
+Add Model Data:
+-Access first of a series of VBOs, and iterate until finding a home
+-Is this VBO empty? (if yes, then load data here)
+-If not empty, does this data fit the size cap? (if yes, then load)
+-If not, go to next VBO
+
+
+
+Cal3D "Character Animation Library"
+
+Blender for models? (supports python scripting)
+
+Particles	(emitters and affectors)
+: gravity, other forces
+-energy left
+-position (x, y)
+-velocity (x, y)
+
+update the profiler? (maybe i don't care?)
+
+further work on unicode text string support
+
+try to support all characters in any given ttf file (unicode?)
+
+makefile generation (automake, autoconf?)

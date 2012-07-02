@@ -1,0 +1,17 @@
+import	ffcc00
+def	ffff00
+print	ffff00
+if	00cc00
+else	00cc00
+elif	00cc00
+for	00cc00
+while	00cc00
+return	ff0000
+try	00ff00
+except	0066ff
+raise	ff00ff
+break	006600
+continue	0000ff
+class	0000cc
+'	cc0000
+"	ff9900

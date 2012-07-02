@@ -1,0 +1,59 @@
+PROJECTDIR = .
+BOOSTDIR = $(BOOST)
+PYTHONDIR = /usr/include/python2.3/
+RAKNETDIR = $(PROJECTDIR)/../raknetforstarscape/Source
+
+TARGET = starscape
+OBJECTS = main.o log/log.o \
+	gui/clipboardstring.o \
+	gui/control/edit/document.o \
+	gui/control/edit/documentparser.o gui/control/edit/documentmarkup.o \
+	gui/control/edit/editbox.o \
+	gui/appearance/edit/documentbrush.o \
+	console/terminal.o \
+	python/interpreter.o python/output.o python/terminal.o \
+	net/terminal.o
+
+SWIG_OBJECT = bin/starscape_output.py
+SWIG_INTERFACE = python/starscape_output.i
+
+CC = g++
+
+OPENGLLIBS = -lGLU -lGL
+PYTHONLIB = -lpython2.3
+RAKNETLIB = -lraknet
+
+OPTIMIZEFLAGS = -O3 -fomit-frame-pointer
+
+INCLUDE = -I$(BOOSTDIR) -I$(PYTHONDIR) -I$(RAKNETDIR)\
+		  -I$(PROJECTDIR) -I$(PROJECTDIR)/core -I/usr/X11R6/include
+CFLAGS = `sdl-config --cflags` $(INCLUDE) -Wall -W -Wpointer-arith \
+		 -Wcast-qual -Wcast-align -Winline -Wno-unused-parameter
+LIBS = `sdl-config --libs` -L/usr/X11R6/lib -lSDL_ttf -lSDL_image \
+	   $(OPENGLLIBS) $(PYTHONLIB) $(RAKNETLIB)
+
+.SUFFIXES: .o .cpp
+
+all:	$(SWIG_OBJECT) $(OBJECTS)
+	$(CC) -o bin/$(TARGET) $(CFLAGS) $(OBJECTS) $(LIBS)
+
+$(SWIG_OBJECT):	$(SWIG_INTERFACE)
+	swig -c++ -python -I$(PROJECTDIR) -outdir $(PROJECTDIR)/bin \
+	$(SWIG_INTERFACE)
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+.PHONY: shrink
+
+shrink:
+	echo stripping excess info
+	strip bin/$(TARGET)
+
+.PHONY:	clean
+
+clean:
+	echo cleaning up
+	rm $(SWIG_OBJECT)
+	rm $(OBJECTS)
+	rm bin/$(TARGET)

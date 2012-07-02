@@ -1,0 +1,5 @@
+coloredcursors.bmp
+1
+255 0 255
+26 0 12 18
+0 0

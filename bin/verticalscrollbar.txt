@@ -1,0 +1,6 @@
+defaultscrollbarskin.bmp
+1
+255 0 255
+0 0 16 16
+16 0 16 16
+0.0 0.6 0.0 1.0
